@@ -16,6 +16,7 @@
         <div class="balloon"></div>
         <div class="balloon"></div>
     </div>
+    
     <div class="video-container">
         <!-- Video with Dropbox source -->
         <video id="video" width="100%" height="auto" controls>
@@ -29,12 +30,12 @@
         function playVideo() {
             const video = document.getElementById('video');
             video.play();
-            triggerFireworks(); // Trigger fireworks on play
+            triggerFireworks(); // Trigger fireworks when video plays
         }
 
         function triggerFireworks() {
             var scalar = 2;
-            var unicorn = confetti.shapeFromText({ text: '🦄', scalar });
+            var unicorn = confetti.shapeFromText({ text: '🎉', scalar });
 
             var defaults = {
                 spread: 360,
