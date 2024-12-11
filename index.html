@@ -17,32 +17,16 @@
     </div>
     <div class="video-container">
         <!-- Video with Dropbox source -->
-        <video id="video" class="video" controls>
+        <video id="video" width="100%" height="auto" controls>
             <source src="https://www.dropbox.com/scl/fi/4mocentm6lmkr14xqaq6f/video.mp4?rlkey=6hu4zsho4czhdhv85l9siwu76&st=5k7bfk9k&raw=1" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <button class="play-button" onclick="playVideo()">Play</button>
     </div>
-    <div id="fireworks-container"></div> <!-- Fireworks container -->
-    
     <script>
         function playVideo() {
             const video = document.getElementById('video');
             video.play();
-            showFireworks(); // Trigger fireworks after pressing play
-        }
-        // Fireworks effect function
-        function showFireworks() {
-            const container = document.getElementById('fireworks-container');
-            container.innerHTML = ''; // Clear previous fireworks
-            const numFireworks = 10;
-            for (let i = 0; i < numFireworks; i++) {
-                const firework = document.createElement('div');
-                firework.className = 'firework';
-                firework.style.left = `${Math.random() * 100}%`;
-                firework.style.animationDuration = `${Math.random() * 2 + 3}s`; // Random animation time
-                container.appendChild(firework);
-            }
         }
     </script>
 </body>
