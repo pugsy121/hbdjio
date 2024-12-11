@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Birthday Video Player</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.0/dist/confetti.browser.min.js"></script> <!-- Fireworks Library -->
 </head>
 <body>
     <div class="background">
@@ -16,60 +15,34 @@
         <div class="balloon"></div>
         <div class="balloon"></div>
     </div>
-    
     <div class="video-container">
         <!-- Video with Dropbox source -->
-        <video id="video" width="100%" height="auto" controls>
+        <video id="video" class="video" controls>
             <source src="https://www.dropbox.com/scl/fi/4mocentm6lmkr14xqaq6f/video.mp4?rlkey=6hu4zsho4czhdhv85l9siwu76&st=5k7bfk9k&raw=1" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <button class="play-button" onclick="playVideo()">Play</button>
     </div>
-
+    <div id="fireworks-container"></div> <!-- Fireworks container -->
+    
     <script>
         function playVideo() {
             const video = document.getElementById('video');
             video.play();
-            triggerFireworks(); // Trigger fireworks when video plays
+            showFireworks(); // Trigger fireworks after pressing play
         }
-
-        function triggerFireworks() {
-            var scalar = 2;
-            var unicorn = confetti.shapeFromText({ text: '🎉', scalar });
-
-            var defaults = {
-                spread: 360,
-                ticks: 60,
-                gravity: 0,
-                decay: 0.96,
-                startVelocity: 20,
-                shapes: [unicorn],
-                scalar
-            };
-
-            function shoot() {
-                confetti({
-                    ...defaults,
-                    particleCount: 30
-                });
-
-                confetti({
-                    ...defaults,
-                    particleCount: 5,
-                    flat: true
-                });
-
-                confetti({
-                    ...defaults,
-                    particleCount: 15,
-                    scalar: scalar / 2,
-                    shapes: ['circle']
-                });
+        // Fireworks effect function
+        function showFireworks() {
+            const container = document.getElementById('fireworks-container');
+            container.innerHTML = ''; // Clear previous fireworks
+            const numFireworks = 10;
+            for (let i = 0; i < numFireworks; i++) {
+                const firework = document.createElement('div');
+                firework.className = 'firework';
+                firework.style.left = `${Math.random() * 100}%`;
+                firework.style.animationDuration = `${Math.random() * 2 + 3}s`; // Random animation time
+                container.appendChild(firework);
             }
-
-            setTimeout(shoot, 0);
-            setTimeout(shoot, 100);
-            setTimeout(shoot, 200);
         }
     </script>
 </body>
