@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBD Jio</title> <!-- Title for the tab -->
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div class="background">
+        <!-- Balloons for decoration -->
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+    </div>
+
+    <div class="video-container">
+        <!-- Video with Dropbox source -->
+        <video id="video" controls>
+            <source src="https://www.dropbox.com/scl/fi/4mocentm6lmkr14xqaq6f/video.mp4?rlkey=6hu4zsho4czhdhv85l9siwu76&st=5k7bfk9k&raw=1" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <button class="play-button" onclick="playVideo()">Play</button>
+    </div>
+
+    <script>
+        function playVideo() {
+            const video = document.getElementById('video');
+            video.play();
+            // Fireworks Effect
+            fire(0.25, { spread: 26, startVelocity: 55 });
+            fire(0.2, { spread: 60 });
+            fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+            fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
+            fire(0.1, { spread: 120, startVelocity: 45 });
+        }
+
+        function fire(particleRatio, opts) {
+            confetti({
+                ...opts,
+                particleCount: Math.floor(200 * particleRatio),
+                origin: { y: 0.7 }
+            });
+        }
+    </script>
+</body>
+</html>
